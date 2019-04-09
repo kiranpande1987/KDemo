@@ -11,16 +11,6 @@
                   android:layout_height="match_parent"
                   tools:context=".MainActivity">
 
-        <TextView android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:id="@+id/txtHeader"
-                  android:gravity="center"
-                  android:text="@{header.header}"
-                  android:textSize="25dip"
-                  android:background="@color/colorAccent"
-                  android:textColor="#FFFFFF"
-                  android:padding="15dip"/>
-
         <ListView
                 android:id="@+id/listView"
                 android:layout_width="match_parent"
