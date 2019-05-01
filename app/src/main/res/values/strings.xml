@@ -5,4 +5,5 @@
         <item>Webservice</item>
         <item>Sqlite</item>
     </string-array>
+    <string name="title_activity_dashboard">DashboardActivity</string>
 </resources>

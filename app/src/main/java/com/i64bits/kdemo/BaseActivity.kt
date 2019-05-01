@@ -3,8 +3,8 @@ package com.i64bits.kdemo
 import android.databinding.DataBindingUtil
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import com.i64bits.kdemo.databinding.ActivityBaseBinding
-import com.i64bits.kdemo.databinding.ActivityMainBinding
 
 open class BaseActivity : AppCompatActivity() {
 
@@ -19,8 +19,14 @@ open class BaseActivity : AppCompatActivity() {
 
     protected fun setHeader(header: String)
     {
-        val header = Header("Kotlin Demos")
-        binding?.header = header;
+        val header = Header(header)
+        binding?.header = header
         binding?.executePendingBindings()
+    }
+
+    protected fun addView(view: View?)
+    {
+        binding?.baseLayout?.removeAllViews()
+        binding?.baseLayout?.addView(view)
     }
 }

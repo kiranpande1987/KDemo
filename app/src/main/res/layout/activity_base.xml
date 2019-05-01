@@ -16,10 +16,18 @@
                   android:id="@+id/txtHeader"
                   android:gravity="center"
                   android:text="@{header.header}"
-                  android:textSize="25dip"
+                  android:textSize="20sp"
                   android:background="@color/colorAccent"
                   android:textColor="#FFFFFF"
-                  android:padding="15dip"/>
+                  android:padding="12dip"/>
+
+        <LinearLayout
+                android:id="@+id/baseLayout"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+        </LinearLayout>
 
     </LinearLayout>
 </layout>
