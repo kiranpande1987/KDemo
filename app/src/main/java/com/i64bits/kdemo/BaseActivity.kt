@@ -6,9 +6,10 @@ import android.os.Bundle
 import android.view.View
 import com.i64bits.kdemo.databinding.ActivityBaseBinding
 
-open class BaseActivity : AppCompatActivity() {
+open class BaseActivity: AppCompatActivity() {
 
-    var binding: ActivityBaseBinding? = null;
+    var binding: ActivityBaseBinding? = null
+    protected lateinit var view: View
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

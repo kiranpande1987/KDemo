@@ -9,9 +9,10 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name=".basicui.BasicUIActivity">
+        </activity>
         <activity
                 android:name=".dashboard.DashboardActivity"
-                android:label="@string/title_activity_dashboard"
                 android:parentActivityName=".BaseActivity"
                 android:theme="@style/NoActionBar">
             <meta-data
@@ -23,12 +24,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-
-        </activity>
-        <activity android:name=".BaseActivity">
-        </activity>
-        <activity android:name=".MainActivity">
-
         </activity>
     </application>
 
