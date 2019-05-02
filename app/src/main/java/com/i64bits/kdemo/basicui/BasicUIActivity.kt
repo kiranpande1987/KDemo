@@ -4,14 +4,11 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.i64bits.kdemo.BaseActivity
 import com.i64bits.kdemo.R
 import kotlinx.android.synthetic.main.activity_basic_ui.*
-import kotlinx.android.synthetic.main.activity_basic_ui.view.*
 
 class BasicUIActivity : BaseActivity()
 {
@@ -31,8 +28,7 @@ class BasicUIActivity : BaseActivity()
         view = View.inflate(this, R.layout.activity_basic_ui, null)
         addView(view)
 
-        var linearLayoutManager = LinearLayoutManager(this)
-        recyclerView.layoutManager = linearLayoutManager
+        recyclerView.layoutManager = LinearLayoutManager(this)
 
         updateRecyclerView()
     }
@@ -41,12 +37,11 @@ class BasicUIActivity : BaseActivity()
     {
         txtSubmit.setOnClickListener {
 
-            var string: String = edtText.text.toString()
+            val string: String = edtText.text.toString()
 
             if(!string.isEmpty())
             {
                 addToPreferences(string)
-                Log.e("SET", getSetOfString().toString())
             }
             else
             {
@@ -57,28 +52,31 @@ class BasicUIActivity : BaseActivity()
 
     private fun addToPreferences(string: String)
     {
-        var pref: SharedPreferences = getSharedPreferences(PREF_FILE_NAME, Context.MODE_PRIVATE)
-        var set:MutableSet<String> = pref.getStringSet(PREF_NAME, mutableSetOf<String>())
-        set.add(string)
+        val pref: SharedPreferences = getSharedPreferences(PREF_FILE_NAME, Context.MODE_PRIVATE)
+        var set:String = pref.getString(PREF_NAME,"")
+
+        if(set.isEmpty())
+            set = string
+        else
+            set = set +"@"+ string
 
         val editor = pref.edit()
-        editor.putStringSet(PREF_NAME, set)
+        editor.putString(PREF_NAME, set)
         editor.apply()
 
         updateRecyclerView()
     }
 
-    private fun getSetOfString(): MutableSet<String>
+    private fun getSetOfString(): List<String>
     {
-        var pref: SharedPreferences = getSharedPreferences(PREF_FILE_NAME, Context.MODE_PRIVATE)
-        var set:MutableSet<String> = pref.getStringSet(PREF_NAME, mutableSetOf<String>())
+        val pref: SharedPreferences = getSharedPreferences(PREF_FILE_NAME, Context.MODE_PRIVATE)
+        val set:String = pref.getString(PREF_NAME,"")
 
-        return set
+        return set.split("@")
     }
 
     private fun updateRecyclerView()
     {
-        var list: List<String> = getSetOfString().toList()
-        recyclerView.adapter = BasicUIAdapter(list)
+        recyclerView.adapter = BasicUIAdapter(getSetOfString().toList())
     }
 }
