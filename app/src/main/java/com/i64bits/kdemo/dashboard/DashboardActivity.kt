@@ -7,6 +7,7 @@ import android.view.View
 import com.i64bits.kdemo.BaseActivity
 import com.i64bits.kdemo.R
 import com.i64bits.kdemo.basicui.BasicUIActivity
+import com.i64bits.kdemo.webservice.WebserviceActivity
 
 import kotlinx.android.synthetic.main.activity_dashboard.view.*
 
@@ -39,6 +40,7 @@ class DashboardActivity : BaseActivity()
     private fun addDemos()
     {
         demos.add(DashboardModel("Basic UI", BasicUIActivity()))
+        demos.add(DashboardModel("Webservice", WebserviceActivity()))
     }
 
     inner class OnClick(var item: DashboardModel) : View.OnClickListener
